@@ -134,8 +134,16 @@ class SiteController extends Controller
         if($request->isGet){
             //$users = Users::find()->asArray()->all();
             $login =json_encode($request->get('user_login'));
+            $password = json_encode($request->get('user_password'));
             $user = Users::find()->where("login=$login")->asArray()->all();
-            return json_encode($user);
+            $user_pass = Users::find()->where("password=$password")->asArray()->all();
+            if($user AND $user_pass){
+                return json_encode($user);
+            }
+            else{
+                return json_encode("user not found");
+            }
+            
         //return json_encode($login);
         } 
         if($request->isPost){

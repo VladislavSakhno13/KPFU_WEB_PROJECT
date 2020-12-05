@@ -22,8 +22,7 @@ export default class Log_in extends React.Component{
     set_new_user(){
         let login = this.state.login_user;
         let password = this.state.password_user
-       
-        axios.get(`./backend/sing_reg.php?login=${login}&password=${password}`).then(function(response){console.log(response.data)})
+        axios.get(`./basic/web/index.php?r=site/index&user_login=${login}&user_password=${password}`).then(function(response){console.log(response.data)})
     }
     render(){
         return(
